@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wines>
+    <wine origin="France" year="1999" color="red" type="dry">Bordeaux</wine>
+    <wine origin="California" year="2000" color="red"
+        type="dry">Ruby Cabernet</wine>
+    <wine origin="Italy" year="2000" color="white" type="dry">Soave</wine>
+    <wine origin="Italy" year="1998" color="red" type="dry">Chianti</wine>
+    <wine origin="Germany" year="2000" color="white"
+        type="sweet">Riesling</wine>
+    <wine origin="France" year="1999" color="red" type="dry">Merlot</wine>
+</wines>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<updates>
+    <delete ID="2"/>
+    <add ID="1"/>
+    <add ID="1"/>
+    <delete ID="4"/>
+    <update ID="3" quantity="10"/>
+    <update ID="7" quantity="2"/>
+</updates>

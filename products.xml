@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prd:products xmlns:prd="http://www.aspnl.com/xmlns/products">
+    <prd:product prd:ID="1" prd:description="Bordeaux" prd:price="9.95" prd:type="wine"
+        prd:color="red"/>
+    <prd:product prd:ID="2" prd:description="Ruby Cabernet" prd:price="10.95" prd:type="wine"
+        prd:color="red"/>
+    <prd:product prd:ID="3" prd:description="Soave" prd:price="8.95" prd:type="wine"
+        prd:color="white"/>
+    <prd:product prd:ID="4" prd:description="Chianti" prd:price="11.95" prd:type="wine"
+        prd:color="red"/>
+    <prd:product prd:ID="5" prd:description="Merlot" prd:price="7.95" prd:type="wine"
+        prd:color="red"/>
+    <prd:product prd:ID="6" prd:description="Camembert" prd:price="3.95" prd:type="cheese"/>
+    <prd:product prd:ID="7" prd:description="Gouda" prd:price="4.95" prd:type="cheese"/>
+    <prd:product prd:ID="8" prd:description="Brie" prd:price="3.95" prd:type="cheese"/>
+    <prd:product prd:ID="9" prd:description="Mozzarella" prd:price="2.95" prd:type="cheese"/>
+    <prd:product prd:ID="10" prd:description="Feta" prd:price="1.95" prd:type="cheese"/>
+</prd:products>

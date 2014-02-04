@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><shop:basket xmlns:prd="http://www.aspnl.com/xmlns/products" xmlns:shop="xmlns:shop=http://www.aspnl.com/xmlns/shop">
+    <prd:product prd:ID="1" prd:description="Bordeaux" prd:price="9.95" prd:type="wine" prd:color="red" quantity="2"/>
+    
+    <prd:product prd:ID="3" prd:description="Soave" prd:price="8.95" prd:type="wine" prd:color="white" quantity="10"/>
+    
+    
+    
+    <prd:product prd:ID="7" prd:description="Gouda" prd:price="4.95" prd:type="cheese" quantity="2"/>
+    
+    
+    
+</shop:basket>
