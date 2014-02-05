@@ -20,7 +20,11 @@
                 </xsl:element>
                 <xsl:element name="input">
                     <xsl:attribute name="type" select="'button'"></xsl:attribute>
-                    Update Basket
+                    <xsl:attribute name="value">Update Basket</xsl:attribute>
+                </xsl:element>
+                <xsl:element name="a">
+                    <xsl:attribute name="href" select="'prueba.html'"></xsl:attribute>
+                    See products
                 </xsl:element>
             </xsl:element>
         </xsl:element>

@@ -14,7 +14,7 @@
                 <xsl:element name="input">
                     <xsl:attribute name="type">button</xsl:attribute>
                     <xsl:attribute name="value">Show Basket</xsl:attribute>
-                    <xsl:attribute name="onClick">showBasket()</xsl:attribute>
+                    <xsl:attribute name="onClick">selectBasket()</xsl:attribute>
                 </xsl:element>
             </xsl:element>
         </xsl:element>
@@ -39,7 +39,10 @@
             <xsl:element name="td"><xsl:value-of select="@prd:description"/></xsl:element>
             <xsl:element name="td"><xsl:value-of select="@prd:price"/></xsl:element>
             <xsl:element name="td">
-                <xsl:element name="button">Add to Cart</xsl:element>
+                <xsl:element name="button">
+                    <xsl:attribute name="onclick">addProduct(<xsl:value-of select="@prd:ID"></xsl:value-of>)</xsl:attribute>
+                    Add to Cart
+                </xsl:element>
             </xsl:element>
         </xsl:element>
     </xsl:template>
