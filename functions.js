@@ -19,6 +19,8 @@ function displayResult(xmlPath, xslPath) {
     xml = loadXMLDoc(xmlPath);
     xsl = loadXMLDoc(xslPath);
     
+    var txtProducts = XMLToString(xml);
+    
     // code for IE
     if (window.ActiveXObject || xhttp.responseType == "msxml-document") {
         ex = xml.transformNode(xsl);
@@ -29,10 +31,12 @@ function displayResult(xmlPath, xslPath) {
         resultDocument = xsltProcessor.transformToFragment(xml, document);
         document.getElementById("example").appendChild(resultDocument);
     }
+    createCookieProducts(txtProducts);
 }
 
 function showBasket() {
     var str = processCookies();
+    alert(str);
     var doc = StringToXML(str);
     var sera = XMLToString(doc);
     alert(sera);
@@ -59,16 +63,22 @@ function selectBasket() {
 
 function processCookies() {
     var pairs = document.cookie.split(';');
-    var products = "";
-    for (i = 0; i < pairs.length; i++) {
+    var productsBasket = "<root>";
+    productCookie = pairs[pairs.length-1];
+    products = productCookie.split('=<');
+    product = '<'+products[1];
+    
+    productsBasket = productsBasket +  product + '<updates>';
+    for (i = 0; i < pairs.length-1; i++) {
         var value = pairs[i].split('=<');
-        products = products + '<' + value[1];
+        productsBasket = productsBasket + '<' + value[1];
     }
-    return products;
+    productsBasket = productsBasket + "</updates></root>"
+    return productsBasket;
 }
 
 function StringToXML(text) {
-    text= "<updates>"+text+"</updates>";
+    //text= "<updates>"+text+"</updates>";
     if (window.ActiveXObject) {
         var doc = new ActiveXObject('Microsoft.XMLDOM');
         doc.async = 'false';
@@ -86,6 +96,11 @@ function addProduct(idProd) {
     alert(document.cookie);
 }
 
+function createCookieProducts(txtProd) {
+    //alert(txtProd);
+    document.cookie = 'cookieprod' + '=' + txtProd;
+    alert(document.cookie);
+}
 
 function XMLToString(xmlDom) {
     var strs = null;

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <prd:products xmlns:prd="http://www.aspnl.com/xmlns/products">
     <prd:product prd:ID="1" prd:description="Bordeaux" prd:price="9.95" prd:type="wine"
         prd:color="red"/>
