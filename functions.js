@@ -31,13 +31,15 @@ function displayResult(xmlPath, xslPath) {
         resultDocument = xsltProcessor.transformToFragment(xml, document);
         document.getElementById("example").appendChild(resultDocument);
     }
-    createCookieProducts(txtProducts);
+    copyProducts(txtProducts);
 }
 
 function showBasket() {
-    var str = processCookies();
-    alert(str);
-    var doc = StringToXML(str);
+    var updatesAndProducts = '<root>' + localStorage.products + 
+                               '<updates>' + localStorage.updates + '</updates>' +
+                              '</root>';
+    alert(updatesAndProducts);
+    var doc = StringToXML(updatesAndProducts);
     var sera = XMLToString(doc);
     alert(sera);
     var xsl = loadXMLDoc('shopBasket1.xsl');
@@ -51,7 +53,7 @@ function showBasket() {
     if (document.implementation && document.implementation.createDocument) {
         xsltProcessor = new XSLTProcessor();
         xsltProcessor.importStylesheet(xsl1);
-        finalDocument = xsltProcessor.transformToFragment(resultDocument,document);
+        finalDocument = xsltProcessor.transformToFragment(resultDocument, document);
         document.getElementById("example").appendChild(finalDocument);
         alert(XMLToString(finalDocument));
     }
@@ -64,12 +66,12 @@ function selectBasket() {
 function processCookies() {
     var pairs = document.cookie.split(';');
     var productsBasket = "<root>";
-    productCookie = pairs[pairs.length-1];
+    productCookie = pairs[pairs.length -1];
     products = productCookie.split('=<');
-    product = '<'+products[1];
+    product = '<' + products[1];
     
-    productsBasket = productsBasket +  product + '<updates>';
-    for (i = 0; i < pairs.length-1; i++) {
+    productsBasket = productsBasket + product + '<updates>';
+    for (i = 0; i < pairs.length -1; i++) {
         var value = pairs[i].split('=<');
         productsBasket = productsBasket + '<' + value[1];
     }
@@ -92,15 +94,48 @@ function StringToXML(text) {
 
 function addProduct(idProd) {
     alert(idProd);
-    document.cookie = 'cookie' + idProd + '=' + '<add ID="' + idProd + '" quantity="1"></add>';
-    alert(document.cookie);
+    if (localStorage.updates) {
+        localStorage.updates = localStorage.updates + '<add ID="'+idProd+'" quantity="1"/>';
+    } else {
+        localStorage.updates = '<add ID="'+idProd+'" quantity="1"/>';
+    }
+    alert(localStorage.updates);
 }
 
-function createCookieProducts(txtProd) {
-    //alert(txtProd);
-    document.cookie = 'cookieprod' + '=' + txtProd;
-    alert(document.cookie);
+function deleteProduct(idProd) {
+    alert(idProd);
+    if (localStorage.updates) {
+        localStorage.updates = localStorage.updates + '<delete ID="'+idProd+'"/>';
+    } else {
+        localStorage.updates = '<delete ID="'+idProd+'"/>';
+    }
+    alert(localStorage.updates);
 }
+
+function updateProduct(idProd) {
+    alert('here..');
+    var id = 'input'+idProd;
+    var quantity = document.getElementById(id).value;
+    //alert(idProd);
+    alert(quantity);
+    if (localStorage.updates) {
+        localStorage.updates = localStorage.updates + '<update ID="'+idProd+'" quantity="'+ quantity+'"/>';
+    } else {
+        localStorage.updates = '<update ID="'+idProd+'" quantity="'+ quantity+'"/>';
+    }
+    alert(localStorage.updates);
+}
+
+function copyProducts(txtProd) {
+   alert(txtProd);
+   if (localStorage.products) {
+        localStorage.product = localStorage.products + txtProd;
+    } else {
+        localStorage.products = txtProd;
+    }
+}
+
+
 
 function XMLToString(xmlDom) {
     var strs = null;
@@ -110,3 +145,4 @@ function XMLToString(xmlDom) {
     } else strs = doc.xml;
     return strs;
 }
+

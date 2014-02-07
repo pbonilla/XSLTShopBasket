@@ -34,9 +34,19 @@
             <xsl:when test="$idProd &lt;= $prodCounter">
                 <xsl:if test="count(child::*[@ID=$idProd])>0">
                     <xsl:choose>
-                        <xsl:when test="child::*[@ID=$idProd and (name()='add' or name()='update')]">
+                        <xsl:when test="child::*[@ID=$idProd and name()='delete']"/>
+                        <xsl:when test="child::*[@ID=$idProd and name()='update'][last()]">
                             <xsl:variable name="quantity"
-                                select="child::*[@ID=$idProd and (name()='add' or name()='update')][1]/@quantity"/>
+                                select="child::*[@ID=$idProd and name()='update'][1]/@quantity"/>
+                            <xsl:apply-templates select="$products/*[@prd:ID = $idProd]">
+                                <xsl:with-param name="quantity">
+                                    <xsl:value-of select="$quantity"/>
+                                </xsl:with-param>
+                            </xsl:apply-templates>
+                        </xsl:when>
+                        <xsl:when test="child::*[@ID=$idProd and name()='add']">
+                            <xsl:variable name="quantity"
+                                select="child::*[@ID=$idProd and name()='add'][1]/@quantity"/>
                             <xsl:apply-templates select="$products/*[@prd:ID = $idProd]">
                                 <xsl:with-param name="quantity">
                                     <xsl:value-of select="$quantity"/>

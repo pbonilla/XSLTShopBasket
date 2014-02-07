@@ -15,15 +15,18 @@
                         <xsl:element name="th">Price</xsl:element>
                         <xsl:element name="th">Product Total</xsl:element>
                         <xsl:element name="th">Delete</xsl:element>
+                        <xsl:element name="th">Update</xsl:element>
                     </xsl:element>
                     <xsl:call-template name="rowsOfProducts"/>
                 </xsl:element>
-                <xsl:element name="input">
-                    <xsl:attribute name="type" select="'button'"></xsl:attribute>
-                    <xsl:attribute name="value">Update Basket</xsl:attribute>
+                <xsl:element name="div">
+                    <xsl:element name="button">
+                        <xsl:attribute name="onclick">selectBasket()</xsl:attribute>
+                        Update Basket
+                    </xsl:element>    
                 </xsl:element>
                 <xsl:element name="a">
-                    <xsl:attribute name="href" select="'prueba.html'"></xsl:attribute>
+                    <xsl:attribute name="href" select="'main.html'"></xsl:attribute>
                     See products
                 </xsl:element>
             </xsl:element>
@@ -35,9 +38,11 @@
             <xsl:element name="tr">
                 <xsl:element name="td">
                     <xsl:element name="input">
+                        <xsl:attribute name="type" select="'text'"/>
                         <xsl:attribute name="value">
                             <xsl:value-of select="@quantity"/>
                         </xsl:attribute>
+                        <xsl:attribute name="id"><xsl:value-of select="concat('input',@prd:ID)"/></xsl:attribute> 
                     </xsl:element>
                 </xsl:element>
                 <xsl:element name="td">
@@ -50,12 +55,18 @@
                     <xsl:value-of select="number(@quantity)*number(@prd:price)"/>
                 </xsl:element>
                 <xsl:element name="td">
-                    <xsl:element name="input">
-                        <xsl:attribute name="type" select="'checkbox'"/>
-                        <xsl:element name="br"/>
+                    <xsl:element name="button">
+                        <xsl:attribute name="onclick">deleteProduct(<xsl:value-of select="@prd:ID"></xsl:value-of>)</xsl:attribute>
+                        Delete
+                    </xsl:element>  
+                </xsl:element>
+                <xsl:element name="td">
+                    <xsl:element name="button">
+                        <xsl:attribute name="onclick">updateProduct(<xsl:value-of select="@prd:ID"></xsl:value-of>)</xsl:attribute>
+                        Update
                     </xsl:element>
                 </xsl:element>
-            </xsl:element>
+            </xsl:element>  
         </xsl:for-each>
     </xsl:template>
 </xsl:stylesheet>

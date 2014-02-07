@@ -11,29 +11,48 @@
             <th>Price</th>
             <th>Product Total</th>
             <th>Delete</th>
+            <th>Update</th>
          </tr>
          <tr>
-            <td><input value="2"></td>
+            <td><input type="text" value="2" id="input1"></td>
             <td>9.95</td>
             <td>Bordeaux</td>
             <td>19.9</td>
-            <td><input type="checkbox"><br></td>
+            <td><button onclick="deleteProduct(1)">
+                  Delete
+                  </button></td>
+            <td><button onclick="updateProduct(1)">
+                  Update
+                  </button></td>
          </tr>
          <tr>
-            <td><input value="10"></td>
+            <td><input type="text" value="10" id="input3"></td>
             <td>8.95</td>
             <td>Soave</td>
             <td>89.5</td>
-            <td><input type="checkbox"><br></td>
+            <td><button onclick="deleteProduct(3)">
+                  Delete
+                  </button></td>
+            <td><button onclick="updateProduct(3)">
+                  Update
+                  </button></td>
          </tr>
          <tr>
-            <td><input value="2"></td>
+            <td><input type="text" value="2" id="input7"></td>
             <td>4.95</td>
             <td>Gouda</td>
             <td>9.9</td>
-            <td><input type="checkbox"><br></td>
+            <td><button onclick="deleteProduct(7)">
+                  Delete
+                  </button></td>
+            <td><button onclick="updateProduct(7)">
+                  Update
+                  </button></td>
          </tr>
-      </table><input type="button" value="Update Basket"><a href="prueba.html">
+      </table>
+      <div><button onclick="showBasket()">
+            Update Basket
+            </button></div><a href="main.html">
          See products
          </a></body>
 </html>
